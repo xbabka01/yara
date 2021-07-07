@@ -1017,6 +1017,41 @@ Reference
 
     *Example:  pe.imports(/kernel32\.dll/i, /(Read|Write)ProcessMemory/) == 2*
 
+
+.. c:type:: number_of_delay_imports
+
+    Number of delay imported DLLs in the PE. (Number of IMAGE_DELAYLOAD_DESCRIPTOR parsed from file)
+
+.. c:type:: number_of_delay_imported_functions
+
+    Number of delay imported functions in the PE.
+
+.. c:type:: delay_import_details
+
+    Array of structures containing information about the PE's delay imports libraries.
+
+    .. c:member:: library_name
+
+        Library name.
+
+    .. c:member:: number_of_functions
+
+        Number of imported function.
+
+    .. c:member:: functions
+
+        Array of structures containing information about the PE's imports functions.
+
+        .. c:member:: name
+
+            Name of imported function
+
+        .. c:member:: ordinal
+
+            Ordinal of imported function. If ordinal does not exists this value is YR_UNDEFINED
+
+    *Example: pe.delay_import_details[1].name == "library_name"
+
 .. c:function:: locale(locale_identifier)
 
     .. versionadded:: 3.2.0
